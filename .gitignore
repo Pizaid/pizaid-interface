@@ -1,6 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+*.pyc
 
 # C extensions
 *.so
@@ -51,3 +52,9 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
+
+# unnecessary file
+*.swp
+
+# sass cache
+pizaid/interface/static/sass/.sass-cache
