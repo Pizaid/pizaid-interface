@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djcompass'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -87,3 +88,10 @@ STATIC_DIRS = (
 TEMPLATE_DIRS = (
         os.path.join(BASE_DIR, 'interface/template'),
         )
+
+# django-compass settings
+# https://pypi.python.org/pypi/django-compass2/0.2
+
+COMPASS_INPUT = os.path.join(BASE_DIR, 'interface/static/sass')
+COMPASS_OUTPUT = os.path.join(BASE_DIR, 'interface/static/css')
+COMPASS_STYLE = 'nested'
