@@ -83,16 +83,19 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_DIRS = (
-        os.path.join(BASE_DIR, 'interface/static'),
-        os.path.join(BASE_DIR, 'static'),
-        )
+    #os.path.join(BASE_DIR, 'interface/static'),
+    os.path.join(BASE_DIR, 'static'),
+)
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 TEMPLATE_DIRS = (
-        os.path.join(BASE_DIR, 'interface/template'),
-        )
+    os.path.join(BASE_DIR, 'interface/template'),
+)
 
 # django-compass settings
 # https://pypi.python.org/pypi/django-compass2/0.2
 
-COMPASS_INPUT = os.path.join(BASE_DIR, 'interface/static/sass')
-COMPASS_OUTPUT = os.path.join(BASE_DIR, 'interface/static/css')
+COMPASS_INPUT = os.path.join(BASE_DIR, 'meta/sass')
+COMPASS_OUTPUT = os.path.join(BASE_DIR, 'static/css')
 COMPASS_STYLE = 'nested'

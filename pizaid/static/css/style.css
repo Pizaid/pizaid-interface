@@ -1,0 +1,36 @@
+/* line 3, ../../meta/sass/style.scss */
+div#wrapper {
+  margin: 0;
+  padding: 0; }
+  /* line 7, ../../meta/sass/style.scss */
+  div#wrapper #header {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    height: 35px;
+    width: 100%;
+    background-color: #FFA07A; }
+    /* line 16, ../../meta/sass/style.scss */
+    div#wrapper #header h1 {
+      height: 11px; }
+  /* line 21, ../../meta/sass/style.scss */
+  div#wrapper #footer {
+    position: absolute;
+    height: 35px;
+    width: 100%;
+    bottom: 0;
+    background-color: #FFA07A; }
+  /* line 29, ../../meta/sass/style.scss */
+  div#wrapper #graph {
+    margin: 10px;
+    height: 100px;
+    width: 100px;
+    background-color: #FFFF00; }
+  /* line 36, ../../meta/sass/style.scss */
+  div#wrapper #side-menu {
+    float: left;
+    border-right: 1px solid black;
+    padding-top: 50px;
+    width: 15%;
+    height: 100%; }

@@ -1,36 +1,46 @@
 @import "compass/css3";
 
-body {
-    margin: 0px;
-}
+div#wrapper {
+  margin: 0;
+  padding: 0;
 
-#header {
+  #header {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
     height: 35px;
     width: 100%;
     background-color: #FFA07A;
-}
-#header h1 {
-    height:8px;
-}
 
-#footer {
+    h1 {
+      height: 11px;
+    }
+  }
+
+  #footer {
     position: absolute;
     height: 35px;
     width: 100%;
     bottom: 0;
     background-color: #FFA07A;
-}
+  }
 
-#graph {
+  #graph {
     margin: 10px;
     height: 100px;
     width: 100px;
     background-color: #FFFF00;
+  }
+
+  #side-menu {
+    float: left;
+    border-right: 1px solid black;
+    padding-top: 50px;
+    width: 15%;
+    height: 100%;
+  }
+
 }
 
-#side-menu {
-    position: absolute;
-    border-right: 1px solid black;
-    width: 300px;
-    height: 100%;
-}
+
