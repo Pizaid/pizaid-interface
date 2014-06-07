@@ -81,12 +81,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
+STATIC_ROOT = '/var/www/pizaid/'
 STATIC_URL = '/static/'
-STATIC_DIRS = (
-    #os.path.join(BASE_DIR, 'interface/static'),
-    os.path.join(BASE_DIR, 'static'),
-)
 STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'interface/static'),
     os.path.join(BASE_DIR, 'static'),
 )
 TEMPLATE_DIRS = (
@@ -96,6 +94,6 @@ TEMPLATE_DIRS = (
 # django-compass settings
 # https://pypi.python.org/pypi/django-compass2/0.2
 
-COMPASS_INPUT = os.path.join(BASE_DIR, 'meta/sass')
+COMPASS_INPUT = os.path.join(BASE_DIR, 'static_meta/sass')
 COMPASS_OUTPUT = os.path.join(BASE_DIR, 'static/css')
 COMPASS_STYLE = 'nested'
