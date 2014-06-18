@@ -57,4 +57,4 @@ docs/_build/
 *.swp
 
 # sass cache
-pizaid/interface/static/sass/.sass-cache
+pizaid/interface/static_meta/sass/.sass-cache
