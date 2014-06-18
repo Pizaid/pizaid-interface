@@ -37,7 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'djcompass',
-    'coffeescript'
+    'coffeescript',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -84,12 +84,26 @@ USE_TZ = True
 STATIC_ROOT = '/var/www/pizaid/'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'interface/static'),
     os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'interface/static'),
+)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoryFinder',
+    'coffeescript.finders.CoffeescriptFinder',
 )
 TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'static/template'),
     os.path.join(BASE_DIR, 'interface/template'),
 )
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+)
+
 
 # django-compass settings
 # https://pypi.python.org/pypi/django-compass2/0.2
@@ -97,3 +111,11 @@ TEMPLATE_DIRS = (
 COMPASS_INPUT = os.path.join(BASE_DIR, 'static_meta/sass')
 COMPASS_OUTPUT = os.path.join(BASE_DIR, 'static/css')
 COMPASS_STYLE = 'nested'
+
+
+# django-coffeescript settings
+# XXX: this package is not maintained!!!
+# https://pypi.python.org/pypi/django-coffeescript/
+
+COFFEESCRIPT_EXECUTABLE = 'coffee'
+COFFEESCRIPT_ROOT = 'static/coffee'
