@@ -6,7 +6,11 @@
 {% include 'interface/side-menu.html' %}
 <div id="contents">
 status!<br/>
-ip: {{ipv4}}
+ip: {{ipv4}}<br/>
+names: {% for n in names %}{{n}}, {% endfor %}<br/>
+total: {{total}} KB<br/>
+used: {{used}} KB<br/>
+usage: {{usage}} %<br/>
 </div>
 <div id="footer"></div>
 </div>
