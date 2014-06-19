@@ -1,46 +1,81 @@
 @import "compass/css3";
 
-div#wrapper {
+$header-height: 35px;
+$footer-height: 100px;
+$color: #ffa07a;
+
+p {
   margin: 0;
-  padding: 0;
+}
 
-  #header {
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    left: 0;
-    height: 35px;
-    width: 100%;
-    background-color: #FFA07A;
+div#header {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  height: $header-height;
+  width: 100%;
+  background-color: $color;
 
-    h1 {
-      height: 11px;
+  p {
+    font: bold;
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+div#footer {
+  position: fixed;
+  z-index: 100;
+  height: $footer-height;
+  width: 100%;
+  bottom: 0;
+  background-color: $color;
+
+  p {
+    text-align: center;
+  }
+}
+
+div#side-menu {
+  position: fixed;
+  float: left;
+  border-right: 1px solid black;
+  padding-top: $header-height + 15px;
+  width: 15%;
+  height: 100%;
+
+  dl{
+    dd {
+      margin: 10px;
     }
   }
-
-  #footer {
-    position: absolute;
-    height: 35px;
-    width: 100%;
-    bottom: 0;
-    background-color: #FFA07A;
-  }
-
-  #graph {
-    margin: 10px;
-    height: 100px;
-    width: 100px;
-    background-color: #FFFF00;
-  }
-
-  #side-menu {
-    float: left;
-    border-right: 1px solid black;
-    padding-top: 50px;
-    width: 15%;
-    height: 100%;
-  }
-
 }
 
 
+body {
+  margin: 0;
+
+  div#wrapper {
+    margin: 0;
+    padding: 0;
+
+    div#contents {
+      float: right;
+      padding-top: $header-height;
+      width: 85%;
+      height: 100%;
+
+      div#main {
+        height: 100%;
+        padding: 15px 10px $footer-height+10px;
+
+        div {
+          h2 {
+            text-decoration: underline;
+          }
+      }
+      }
+    }
+  }
+}

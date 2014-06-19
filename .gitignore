@@ -56,5 +56,6 @@ docs/_build/
 # unnecessary file
 *.swp
 
-# sass cache
-pizaid/interface/static_meta/sass/.sass-cache
+# sass
+pizaid/static/css/*
+pizaid/static_meta/sass/.sass-cache
