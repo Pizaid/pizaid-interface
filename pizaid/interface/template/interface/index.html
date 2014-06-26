@@ -1,22 +1,18 @@
-{% load coffeescript %}
-{% load staticfiles %}
+{% extends "base.html" %}
 
-<html>
-  <head>
-    <title> {{ title }} </title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-  </head>
-  <body>
-    <div id="wrapper">
-      {% include 'interface/header.html' %}
-      {% include 'interface/side-menu.html' %}
-      {% include 'interface/main.html' %}
-      {% include 'interface/footer.html' %}
-    </div>
-    <script type="text/javascript">
-      {% inlinecoffeescript %}
-        console.log "Hello";
-      {% endinlinecoffeescript%}
-    </script>
-  </body>
-</html>
+{% block title %}Pizaidへようこそ！{% endblock %}
+
+<div id="main">
+
+  <div class="hardware">
+    <h2>ディスクの使用状況</h2>
+  </div>
+
+  <div class="hardware">
+    <h2>バッテリー容量の確認</h2>
+  </div>
+
+  <div class="network">
+    <h2>バッテリー容量の確認</h2>
+  </div>
+</div>
