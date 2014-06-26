@@ -1,18 +1,20 @@
-{% include 'interface/head.html' %}
-</head>
-<body>
-<div id="wrapper">
-<div id="header"><h1>status</h1></div>
-{% include 'interface/side-menu.html' %}
-<div id="contents">
-status!<br/>
-ip: {{ipv4}}<br/>
-names: {% for n in names %}{{n}}, {% endfor %}<br/>
-total: {{total}} KB<br/>
-used: {{used}} KB<br/>
-usage: {{usage}} %<br/>
+{% extends "base.html" %}
+
+{% block title %}Pizaidへようこそ！{% endblock %}
+
+{% block content %}
+<div id="main">
+
+  <div class="hardware">
+    <h2>ディスクの使用状況</h2>
+  </div>
+
+  <div class="hardware">
+    <h2>ここはstatusだよ</h2>
+  </div>
+
+  <div class="network">
+    <h2>バッテリー容量の確認</h2>
+  </div>
 </div>
-<div id="footer"></div>
-</div>
-</body>
-</html>
+{% endblock %}

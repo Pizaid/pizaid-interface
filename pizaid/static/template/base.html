@@ -1,0 +1,24 @@
+{% load coffeescript %}
+{% load staticfiles %}
+
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    <title> {% block title %} Pizaid {% endblock %} </title>
+  </head>
+  <body>
+    <div id="wrapper">
+      {% include 'header.html' %}
+      {% include 'side-menu.html' %}
+      <div id="contents">
+        {% block content %}{% endblock %}
+      </div>
+      {% include 'footer.html' %}
+    </div>
+    <script type="text/javascript">
+      {% inlinecoffeescript %}
+        console.log "Hello";
+      {% endinlinecoffeescript%}
+    </script>
+  </body>
+</html>
