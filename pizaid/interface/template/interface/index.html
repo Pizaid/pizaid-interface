@@ -1,5 +1,17 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
+
+<!-- include extra css -->
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/interface_index.css' %}" />
+{% endblock %}
+
+<!-- include extra javascript -->
+{% block extra_javascript %}
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+{% endblock %}
+
 {% block title %}Pizaidへようこそ！{% endblock %}
 
 {% block content %}
@@ -9,7 +21,7 @@
     <h2>ディスクの使用状況</h2>
   </div>
 
-  <div class="hardware">
+  <div class="battery">
     <h2>バッテリー容量の確認</h2>
   </div>
 

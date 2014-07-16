@@ -4,6 +4,7 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+    {% block extra_css %}{% endblock %}
     <title> {% block title %} Pizaid {% endblock %} </title>
   </head>
   <body>
@@ -22,5 +23,6 @@
         console.log "Hello";
       {% endinlinecoffeescript%}
     </script>
+    {% block extra_javascript %}{% endblock %}
   </body>
 </html>
