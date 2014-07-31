@@ -37,7 +37,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'djcompass',
-    'coffeescript',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -90,7 +89,6 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoryFinder',
-    'coffeescript.finders.CoffeescriptFinder',
 )
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'static/template'),
