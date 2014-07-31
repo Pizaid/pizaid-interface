@@ -111,11 +111,3 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 COMPASS_INPUT = os.path.join(BASE_DIR, 'static_meta/sass')
 COMPASS_OUTPUT = os.path.join(BASE_DIR, 'static/css')
 COMPASS_STYLE = 'nested'
-
-
-# django-coffeescript settings
-# XXX: this package is not maintained!!!
-# https://pypi.python.org/pypi/django-coffeescript/
-
-COFFEESCRIPT_EXECUTABLE = 'coffee'
-COFFEESCRIPT_ROOT = 'static/coffee'
