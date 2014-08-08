@@ -1,27 +1,26 @@
 from django.shortcuts import render_to_response
-from dbusinterface.pizaidnetwork import PizaidNetwork
-from dbusinterface.pizaidstorage import PizaidStorage
-from dbusinterface.pizaidpower import PizaidPower
+# from dbusinterface.pizaidnetwork import PizaidNetwork
+# from dbusinterface.pizaidstorage import PizaidStorage
+# from dbusinterface.pizaidpower import PizaidPower
+from thriftinterface.controllercomm import ControllerComm
 
 # Create your views here.
 def index(request):
     return render_to_response('interface/index.html')
 
 def status(request):
-    network = PizaidNetwork().get_properties()
-    storage = PizaidStorage().get_properties()
-    power   = PizaidPower().get_properties()
-
-    names = storage.Get_names()
-    return render_to_response('interface/status.html',
-                              {
-                                  'ipv4' : network.Get_ipv4(),
-                                  'names': names,
-                                  'total': storage.Get_capacity_kb(names[0]),
-                                  'used' : storage.Get_usage_kb(names[0]),
-                                  'usage': storage.Get_usage_percent(names[0]),
-                                  'ac'   : power.Is_ac_plugin()
-                              })
+    status = {}
+    # 通信が必要な内容はすべてwith句に収める必要がある
+    with ControllerComm() as comm:
+        names = comm.storage().get_names()
+        status['ipv4'] = comm.network().get_ipv4()
+        status['names'] = names
+        status['total'] = comm.storage().get_capacity_kb(names[0])
+        status['used'] = comm.storage().get_usage_kb(names[0])
+        status['usage'] = comm.storage().get_usage_percent(names[0])
+        status['ac'] = comm.power().is_ac_plugin()
+        
+    return render_to_response('interface/status.html', status)
 
 def info(request):
     return render_to_response('interface/info.html')
