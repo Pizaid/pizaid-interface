@@ -25,3 +25,5 @@ class PizaidStorage:
         return self.client.storage_join(name, device)
     def devs(self, name):
         return self.client.storage_devs(name)
+    def dev_id(self, device):
+        return self.client.storage_dev_id(device)
