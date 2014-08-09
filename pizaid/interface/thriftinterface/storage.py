@@ -23,5 +23,5 @@ class PizaidStorage:
         return self.client.storage_is_sync()
     def join(self, name, device):
         return self.client.storage_join(name, device)
-    def dev(self, name):
+    def devs(self, name):
         return self.client.storage_devs(name)
