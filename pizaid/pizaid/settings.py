@@ -80,7 +80,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_ROOT = '/var/www/pizaid/'
+STATIC_ROOT = '/home/pi/pizaid/pizaid-interface/pizaid/'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
@@ -88,7 +88,7 @@ STATICFILES_DIRS = (
 )
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoryFinder',
+    #'django.contrib.staticfiles.finders.AppDirectoryFinder',
 )
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'static/template'),

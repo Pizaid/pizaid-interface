@@ -12,6 +12,7 @@ import sys
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pizaid.settings")
 sys.path.append("~/GitHub/pizaid-interface/pizaid")
+sys.path.append("/home/pi/pizaid/pizaid-interface/pizaid")
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
