@@ -9,9 +9,17 @@
   <body>
     <div id="wrapper">
       {% include 'header.html' %}
-      {% include 'side-menu.html' %}
-      <div id="contents">
-        {% block content %}{% endblock %}
+      <div id="container">
+        <div id="side-menu">
+          <dl>
+            <dd><a href="/interface" name="top">top</a><br/></dd>
+            <dd><a href="/interface/status" name="status">status</a><br/></dd>
+            <dd><a href="/interface/settings" name="settings">settings</a><br/></dd>
+          </dl>
+        </div>
+        <div id="content">
+          {% block content %}{% endblock %}
+        </div>
       </div>
       {% include 'footer.html' %}
     </div>

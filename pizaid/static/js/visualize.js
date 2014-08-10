@@ -20,8 +20,8 @@ $(function() {
 
   var svg = d3.select("#harddisk")
               .append("svg")
-              .attr("width", 300)
-              .attr("height", 300);
+              .attr("width", 250)
+              .attr("height", 250);
 
   var g = svg.selectAll("path").data(data_arr).enter()
             .append("path")

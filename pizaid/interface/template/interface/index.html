@@ -16,19 +16,19 @@
 {% block title %}Pizaidへようこそ！{% endblock %}
 
 {% block content %}
-<div id="main">
+<div id="hardware" class="element">
+  <h2>ディスクの使用状況</h2>
+  <div id="harddisk"></div>
+</div>
 
-  <div class="hardware">
-    <div id="harddisk"></div>
-    <h2>ディスクの使用状況</h2>
-  </div>
+<div id="battery" class="element">
+  <h2>バッテリー容量</h2>
+  <p>残り42%</p>
+</div>
 
-  <div class="battery">
-    <h2>バッテリー容量の確認</h2>
-  </div>
+<div id="network" class="element">
+  <h2>ネットワークの設定</h2>
+  <p>IPアドレス   -   192.168.11.123</p>
 
-  <div class="network">
-    <h2>バッテリー容量の確認</h2>
-  </div>
 </div>
 {% endblock %}

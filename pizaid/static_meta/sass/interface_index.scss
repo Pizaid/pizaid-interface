@@ -1,5 +1,9 @@
 @import "compass/css3";
 
-div#main div.hardware{
-  color: red;
+div.element {
+  margin-bottom: 20px;
+
+  h2 {
+    text-decoration: underline;
+  }
 }
