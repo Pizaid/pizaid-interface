@@ -8,7 +8,9 @@
   </head>
   <body>
     <div id="wrapper">
-      {% include 'header.html' %}
+      <div id="header">
+        <p>Pizaid</p>
+      </div>
       <div id="container">
         <div id="side-menu">
           <dl>
@@ -21,9 +23,12 @@
           {% block content %}{% endblock %}
         </div>
       </div>
-      {% include 'footer.html' %}
+      <div id="footer">
+        <p>all rights reserved</p>
+      </div>
     </div>
-    <script type="text/javascript" src="{% static 'js/jquery-2.0.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/vendors/jquery-2.0.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/vendors/jquery-2.0.3.min.map' %}"></script>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     {% block extra_javascript %}{% endblock %}
   </body>
