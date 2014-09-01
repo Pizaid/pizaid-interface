@@ -5,12 +5,14 @@
 <!-- include extra css -->
 {% block extra_css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/interface_index.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/interface_battery.css' %}" />
 {% endblock %}
 
 <!-- include extra javascript -->
 {% block extra_javascript %}
-<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/vendors/bullet.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/disk_usage_pie_chart.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/battery_bullet_chart.js' %}"></script>
 {% endblock %}
 
 {% block title %}Pizaidへようこそ！{% endblock %}
