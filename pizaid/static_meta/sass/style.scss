@@ -1,7 +1,7 @@
 @import "compass/css3";
 
 $header-height: 35px;
-$sidebar-width: 180px;
+$sidebar-width: 140px;
 $footer-height: 30px;
 $color: #ffa07a;
 
@@ -9,7 +9,7 @@ body {
   margin: 0;
 }
 
-h2 {
+h2, h3 {
   margin: 0;
 }
 
@@ -39,7 +39,8 @@ div#wrapper {
   }
 
   div#container {
-    padding: $header-height+10 40px 0;
+    margin: 50px auto 0;
+    width: 1100px;
     height: 90%;
 
     div#side-menu {
@@ -58,14 +59,13 @@ div#wrapper {
     }
 
     div#content {
-      margin-left: $sidebar-width + 30px;
+      margin-left: $sidebar-width + 50px;
     }
   }
 
   div#footer {
     z-index: 100;
     height: $footer-height;
-    width: 100%;
     bottom: 0;
     background-color: $color;
 

@@ -10,25 +10,57 @@
 <!-- include extra javascript -->
 {% block extra_javascript %}
 <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/visualize.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/pie_chart.js' %}"></script>
 {% endblock %}
 
 {% block title %}Pizaidへようこそ！{% endblock %}
 
 {% block content %}
-<div id="hardware" class="element">
-  <h2>ディスクの使用状況</h2>
-  <div id="harddisk"></div>
+<div class="left">
+  <div id="hardware" class="element">
+    <h2>ディスクの使用状況</h2>
+    <div id="harddisk"></div>
+  </div>
+
+  <div id="battery" class="element">
+    <h2>バッテリー容量</h2>
+    <p>残り42%</p>
+  </div>
+
+  <div id="network" class="element">
+    <h2>ネットワークの設定</h2>
+    <p>IPアドレス   -   192.168.11.123</p>
+  </div>
 </div>
 
-<div id="battery" class="element">
-  <h2>バッテリー容量</h2>
-  <p>残り42%</p>
-</div>
+<div class="right">
+  <div id="main-storage" class="element">
+    <h2>Mainストレージ</h2>
+    <div class="subelement">
+      <h3 class="port1">USB Port 1</h3>
+        <p>/dev/sda1</p>
+        <p>170GB / 256GB</p>
+    </div>
+    <div class="subelement">
+      <h3 class="port2">USB Port 2</h3>
+        <p>/dev/sda2</p>
+        <p>30GB / 128GB</p>
+    </div>
+    <div class="subelement">
+      <h3 class="port3">USB Port 3</h3>
+        <p>/dev/sda3</p>
+        <p>402GB / 1TB</p>
+    </div>
+  </div>
 
-<div id="network" class="element">
-  <h2>ネットワークの設定</h2>
-  <p>IPアドレス   -   192.168.11.123</p>
+  <div id="sync-storage" class="element">
+    <h2>Syncストレージ</h2>
+    <p>未接続</p>
+  </div>
 
+  <div id="unused-storage" class="element">
+    <h2>未使用ストレージ</h2>
+    <p>未接続</p>
+  </div>
 </div>
 {% endblock %}

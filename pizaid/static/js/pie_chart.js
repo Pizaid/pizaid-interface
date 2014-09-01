@@ -1,8 +1,8 @@
 $(function() {
   // http://www.h2.dion.ne.jp/~defghi/svgMemo/svgMemo_20.htm
   var
-    width = 300,
-    height = 300,
+    width = 250,
+    height = 250,
     data_arr = [
       {"name": "application", "score": 80},
       {"name": "video", "score": 100},
@@ -20,8 +20,8 @@ $(function() {
 
   var svg = d3.select("#harddisk")
               .append("svg")
-              .attr("width", 250)
-              .attr("height", 250);
+              .attr("width", width)
+              .attr("height", height);
 
   var g = svg.selectAll("path").data(data_arr).enter()
             .append("path")
