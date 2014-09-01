@@ -10,16 +10,15 @@
 <!-- include extra javascript -->
 {% block extra_javascript %}
 <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/pie_chart.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/disk_usage_pie_chart.js' %}"></script>
 {% endblock %}
 
 {% block title %}Pizaidへようこそ！{% endblock %}
 
 {% block content %}
 <div class="left">
-  <div id="hardware" class="element">
+  <div id="disk-usage" class="element">
     <h2>ディスクの使用状況</h2>
-    <div id="harddisk"></div>
   </div>
 
   <div id="battery" class="element">
