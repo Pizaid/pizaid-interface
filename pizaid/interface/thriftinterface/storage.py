@@ -11,23 +11,23 @@
 class PizaidStorage:
     def __init__(self, client):
         self.client = client
-    def get_names(self):
-        return self.client.storage_names()
-    def get_capacity_kb(self, name):
+    def storage_group_list(self):
+        return self.client.storage_storage_group_list()
+    def capacity_kb(self, name):
         return self.client.storage_capacity_kb(name)
-    def get_usage_kb(self, name):
+    def usage_kb(self, name):
         return self.client.storage_usage_kb(name)
-    def get_usage_percent(self, name):
+    def usage_percent(self, name):
         return self.client.storage_usage_percent(name)
     def is_sync(self):
         return self.client.storage_is_sync()
-    def join(self, name, device):
-        return self.client.storage_join(name, device)
-    def devs(self, name):
-        return self.client.storage_devs(name)
-    def dev_id(self, device):
-        return self.client.storage_dev_id(device)
-    def dev_size(self, device):
-        return self.client.storage_dev_size(device)
-    def dev_port(self, device):
-        return self.client.storage_dev_port(device)
+    def join(self, name, disk):
+        return self.client.storage_join(name, disk)
+    def disk_list(self, name):
+        return self.client.storage_disk_list(name)
+    def disk_id(self, disk):
+        return self.client.storage_disk_id(disk)
+    def disk_size(self, disk):
+        return self.client.storage_disk_size(disk)
+    def disk_port(self, disk):
+        return self.client.storage_disk_port(disk)

@@ -11,7 +11,7 @@
 class PizaidNetwork:
     def __init__(self, client):
         self.client = client
-    def get_ipv4(self):
-        return self.client.network_get_ipv4()
-    def get_ipv6(self):
-        return self.client.network_get_ipv6()
+    def ipv4(self):
+        return self.client.network_ipv4()
+    def ipv6(self):
+        return self.client.network_ipv6()
