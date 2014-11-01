@@ -8,14 +8,25 @@
   </head>
   <body>
     <div id="wrapper">
-      {% include 'header.html' %}
-      {% include 'side-menu.html' %}
-      <div id="contents">
-        {% block content %}{% endblock %}
+      <div id="header">
+        <p>Pizaid</p>
       </div>
-      {% include 'footer.html' %}
+      <div id="container">
+        <div id="side-menu">
+          <dl>
+            <dd><a href="/interface" name="top">status</a><br/></dd>
+            <dd><a href="/interface/settings" name="settings">settings</a><br/></dd>
+          </dl>
+        </div>
+        <div id="content">
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+      <div id="footer">
+        <p>all rights reserved</p>
+      </div>
     </div>
-    <script type="text/javascript" src="{% static 'js/jquery-2.0.3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/vendors/jquery-2.0.3.min.js' %}"></script>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     {% block extra_javascript %}{% endblock %}
   </body>

@@ -1,0 +1,46 @@
+@import "compass/css3";
+
+$container-width: 900px;
+
+div.left {
+  float: left;
+  width: $container-width/2;
+}
+
+div.right {
+  float: right;
+  width: $container-width/2;
+}
+
+div.element {
+  margin-bottom: 20px;
+
+  h2 {
+    text-decoration: underline;
+  }
+
+  div.subelement {
+    margin-bottom: 10px;
+    padding-left: 20px;
+
+    h3 {
+      font-size:120%;
+      line-height: 30px;
+      padding-left: 5px;
+
+      &.port1 {
+        border-left: 8px solid #0000CD;
+      }
+      &.port2 {
+        border-left: 8px solid #7FFFD4;
+      }
+      &.port3 {
+        border-left: 8px solid #B82C5F;
+      }
+    }
+
+    p {
+      padding-left: 15px;
+    }
+  }
+}

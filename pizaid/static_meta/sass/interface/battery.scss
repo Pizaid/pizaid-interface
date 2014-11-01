@@ -1,0 +1,28 @@
+svg.bullet {
+
+  .marker {
+    stroke: #000;
+    stroke-width: 2px;
+  }
+
+  .tick line {
+    stroke: #666;
+    stroke-width: .5px;
+  }
+
+  .range {
+    &.s0 {
+      fill: #eee;
+    }
+    &.s1 {
+      fill: #ddd;
+    }
+    &.s2 {
+      fill: #ccc;
+    }
+  }
+
+  .measure.s0 {
+    fill: steelblue;
+  }
+}
