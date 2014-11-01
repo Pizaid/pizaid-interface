@@ -9,16 +9,9 @@
 #
 
 from django.shortcuts import render_to_response
-# from dbusinterface.pizaidnetwork import PizaidNetwork
-# from dbusinterface.pizaidstorage import PizaidStorage
-# from dbusinterface.pizaidpower import PizaidPower
 from thriftinterface.controllercomm import ControllerComm
 
-# Create your views here.
 def index(request):
-    return render_to_response('interface/index.html')
-
-def status(request):
     status = {}
     # 通信が必要な内容はすべてwith句に収める必要がある
     with ControllerComm() as comm:
@@ -29,11 +22,7 @@ def status(request):
         status['used'] = comm.storage().get_usage_kb(names[0])
         status['usage'] = comm.storage().get_usage_percent(names[0])
         status['ac'] = comm.power().is_ac_plugin()
-        
-    return render_to_response('interface/status.html', status)
-
-def info(request):
-    return render_to_response('interface/info.html')
+    return render_to_response('interface/index.html')
 
 def settings(request):
     return render_to_response('interface/settings.html')

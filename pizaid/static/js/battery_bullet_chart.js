@@ -1,5 +1,6 @@
 $(function() {
   // http://bl.ocks.org/mbostock/4061961
+  // https://gist.github.com/d3noob/5886992
   var
     margin = { top: 10, right: 10, bottom: 20, left: 70 },
     width = 400 - margin.left - margin.right,
