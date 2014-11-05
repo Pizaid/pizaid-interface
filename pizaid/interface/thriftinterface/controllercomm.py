@@ -11,7 +11,7 @@
 import sys, os, traceback
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/gen-py')
 
-from Pizaid import ControllerService
+from pizaid_thrift_client import ControllerService
 
 from thrift.transport import TSocket
 from thrift.transport import TTransport
