@@ -10,19 +10,16 @@
 
 from django.shortcuts import render_to_response
 from thriftinterface.controllercomm import ControllerComm
+import models
 
 def index(request):
-    status = {}
-    # 通信が必要な内容はすべてwith句に収める必要がある
     with ControllerComm() as comm:
-        names = comm.storage().storage_group_list()
-        status['ipv4'] = comm.network().ipv4()
-        status['names'] = names
-        status['total'] = comm.storage().capacity_kb(names[0])
-        status['used'] = comm.storage().usage_kb(names[0])
-        status['usage'] = comm.storage().usage_percent(names[0])
-        status['ac'] = comm.power().is_ac_plugin()
-    return render_to_response('interface/index.html')
+        status = {
+            'network':  models.gather_network_info(comm),
+            'power':    models.gather_power_info(comm),
+            'storages': models.gather_storage_info(comm)
+        }
+    return render_to_response('interface/index.html', status)
 
 def settings(request):
     return render_to_response('interface/settings.html')

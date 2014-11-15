@@ -2,6 +2,7 @@ $(function() {
   // http://bl.ocks.org/mbostock/4061961
   // https://gist.github.com/d3noob/5886992
   var
+    battery_percentage = $("#battery").find("#percentage").data("battery");
     margin = { top: 10, right: 10, bottom: 20, left: 70 },
     width = 400 - margin.left - margin.right,
     height = 60 - margin.top -  margin.bottom,
@@ -10,7 +11,7 @@ $(function() {
         "title": "battery",
         "subtitle": "%",
         "ranges": [30, 60, 100],
-        "measures": [42],
+        "measures": [battery_percentage],
         "markers": [100],
       }
     ];
@@ -40,11 +41,11 @@ $(function() {
     .attr("class", "title")
     .attr("font-size", "14px")
     .attr("font-weight", "bold")
-    .text(function(d) { return d.title; });
+    .text(function(d) { return d.title; } );
 
   title.append("text")
     .attr("class", "subtitle")
     .attr("fill", "#999")
     .attr("dy", "1.5em")
-    .text(function(d) { return d.subtitle; });
+    .text(function(d) { return d.subtitle; } );
 });

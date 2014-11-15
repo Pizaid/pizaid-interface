@@ -25,43 +25,47 @@
 
   <div id="battery" class="element">
     <h2>バッテリー容量</h2>
-    <p>残り42%</p>
+    <p id="percentage" data-battery="{{ power.battery_percent }}">
+      残り{{ power.battery_percent }}%
+    </p>
+    <p id="is_ac_plugin">
+    {% if power.is_ac_on %}
+      充電中
+    {% else %}
+      放電中
+    {% endif %}
+    </p>
   </div>
 
   <div id="network" class="element">
     <h2>ネットワークの設定</h2>
-    <p>IPアドレス   -   192.168.11.123</p>
+    <p id="ipv4">IPアドレス(v4) - {{ network.ipv4 }}</p>
+    <p id="ipv6">IPアドレス(v6) - {{ network.ipv6 }}</p>
   </div>
 </div>
 
 <div class="right">
-  <div id="main-storage" class="element">
-    <h2>Mainストレージ</h2>
-    <div class="subelement">
-      <h3 class="port1">USB Port 1</h3>
-        <p>/dev/sda1</p>
-        <p>170GB / 256GB</p>
-    </div>
-    <div class="subelement">
-      <h3 class="port2">USB Port 2</h3>
-        <p>/dev/sda2</p>
-        <p>30GB / 128GB</p>
-    </div>
-    <div class="subelement">
-      <h3 class="port3">USB Port 3</h3>
-        <p>/dev/sda3</p>
-        <p>402GB / 1TB</p>
-    </div>
+{% for group_name,status in storages.items %}
+  <div id={{ group_name }} class="element">
+    <h2>{{ group_name }}ストレージ</h2>
+    {% if status.capacity_kb == -1 %}
+      {{ name }}に設定されたストレージは存在しません。
+    {% elif status.capacity_kb == 0 %}
+      ストレージが接続されていません。
+    {% else %}
+    <p>{{ status.capacity_kb }} kb</p>
+    <p>{{ status.usage_kb }} kb</p>
+    <p>{{ status.usage_percent}} %</p>
+      {% for disk in status.disks %}
+      <div class="subelement">
+        <h3 class="port1">{{ disk.id }}</h3>
+          <p>{{ disk.port}}</p>
+          <p>{{ disk.size }}</p>
+      </div>
+      {% endfor %}
+    {% endif %}
   </div>
-
-  <div id="sync-storage" class="element">
-    <h2>Syncストレージ</h2>
-    <p>未接続</p>
-  </div>
-
-  <div id="unused-storage" class="element">
-    <h2>未使用ストレージ</h2>
-    <p>未接続</p>
-  </div>
+  {{ status.capacity_kb }} {{ status.usage_kb }} {{ status.usage_percent }}
+{% endfor %}
 </div>
 {% endblock %}
