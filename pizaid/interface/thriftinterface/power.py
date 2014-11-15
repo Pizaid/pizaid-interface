@@ -11,7 +11,7 @@
 class PizaidPower:
     def __init__(self, client):
         self.client = client
-    def get_battery_percent(self):
+    def battery_percent(self):
         return self.client.power_battery_percent()
     def is_ac_plugin(self):
         return self.client.power_is_ac_plugin()

@@ -18,13 +18,13 @@ except:
 
 
 class Iface:
-  def network_get_ipv4(self):
+  def network_ipv4(self):
     pass
 
-  def network_get_ipv6(self):
+  def network_ipv6(self):
     pass
 
-  def storage_names(self):
+  def storage_storage_group_list(self):
     pass
 
   def storage_capacity_kb(self, key):
@@ -51,18 +51,39 @@ class Iface:
   def storage_is_sync(self):
     pass
 
-  def storage_join(self, key, device):
+  def storage_join(self, key, disk):
     """
     Parameters:
      - key
-     - device
+     - disk
     """
     pass
 
-  def storage_devs(self, key):
+  def storage_disk_list(self, key):
     """
     Parameters:
      - key
+    """
+    pass
+
+  def storage_disk_id(self, disk):
+    """
+    Parameters:
+     - disk
+    """
+    pass
+
+  def storage_disk_size(self, disk):
+    """
+    Parameters:
+     - disk
+    """
+    pass
+
+  def storage_disk_port(self, disk):
+    """
+    Parameters:
+     - disk
     """
     pass
 
@@ -80,80 +101,80 @@ class Client(Iface):
       self._oprot = oprot
     self._seqid = 0
 
-  def network_get_ipv4(self):
-    self.send_network_get_ipv4()
-    return self.recv_network_get_ipv4()
+  def network_ipv4(self):
+    self.send_network_ipv4()
+    return self.recv_network_ipv4()
 
-  def send_network_get_ipv4(self):
-    self._oprot.writeMessageBegin('network_get_ipv4', TMessageType.CALL, self._seqid)
-    args = network_get_ipv4_args()
+  def send_network_ipv4(self):
+    self._oprot.writeMessageBegin('network_ipv4', TMessageType.CALL, self._seqid)
+    args = network_ipv4_args()
     args.write(self._oprot)
     self._oprot.writeMessageEnd()
     self._oprot.trans.flush()
 
-  def recv_network_get_ipv4(self):
+  def recv_network_ipv4(self):
     (fname, mtype, rseqid) = self._iprot.readMessageBegin()
     if mtype == TMessageType.EXCEPTION:
       x = TApplicationException()
       x.read(self._iprot)
       self._iprot.readMessageEnd()
       raise x
-    result = network_get_ipv4_result()
+    result = network_ipv4_result()
     result.read(self._iprot)
     self._iprot.readMessageEnd()
     if result.success is not None:
       return result.success
-    raise TApplicationException(TApplicationException.MISSING_RESULT, "network_get_ipv4 failed: unknown result");
+    raise TApplicationException(TApplicationException.MISSING_RESULT, "network_ipv4 failed: unknown result");
 
-  def network_get_ipv6(self):
-    self.send_network_get_ipv6()
-    return self.recv_network_get_ipv6()
+  def network_ipv6(self):
+    self.send_network_ipv6()
+    return self.recv_network_ipv6()
 
-  def send_network_get_ipv6(self):
-    self._oprot.writeMessageBegin('network_get_ipv6', TMessageType.CALL, self._seqid)
-    args = network_get_ipv6_args()
+  def send_network_ipv6(self):
+    self._oprot.writeMessageBegin('network_ipv6', TMessageType.CALL, self._seqid)
+    args = network_ipv6_args()
     args.write(self._oprot)
     self._oprot.writeMessageEnd()
     self._oprot.trans.flush()
 
-  def recv_network_get_ipv6(self):
+  def recv_network_ipv6(self):
     (fname, mtype, rseqid) = self._iprot.readMessageBegin()
     if mtype == TMessageType.EXCEPTION:
       x = TApplicationException()
       x.read(self._iprot)
       self._iprot.readMessageEnd()
       raise x
-    result = network_get_ipv6_result()
+    result = network_ipv6_result()
     result.read(self._iprot)
     self._iprot.readMessageEnd()
     if result.success is not None:
       return result.success
-    raise TApplicationException(TApplicationException.MISSING_RESULT, "network_get_ipv6 failed: unknown result");
+    raise TApplicationException(TApplicationException.MISSING_RESULT, "network_ipv6 failed: unknown result");
 
-  def storage_names(self):
-    self.send_storage_names()
-    return self.recv_storage_names()
+  def storage_storage_group_list(self):
+    self.send_storage_storage_group_list()
+    return self.recv_storage_storage_group_list()
 
-  def send_storage_names(self):
-    self._oprot.writeMessageBegin('storage_names', TMessageType.CALL, self._seqid)
-    args = storage_names_args()
+  def send_storage_storage_group_list(self):
+    self._oprot.writeMessageBegin('storage_storage_group_list', TMessageType.CALL, self._seqid)
+    args = storage_storage_group_list_args()
     args.write(self._oprot)
     self._oprot.writeMessageEnd()
     self._oprot.trans.flush()
 
-  def recv_storage_names(self):
+  def recv_storage_storage_group_list(self):
     (fname, mtype, rseqid) = self._iprot.readMessageBegin()
     if mtype == TMessageType.EXCEPTION:
       x = TApplicationException()
       x.read(self._iprot)
       self._iprot.readMessageEnd()
       raise x
-    result = storage_names_result()
+    result = storage_storage_group_list_result()
     result.read(self._iprot)
     self._iprot.readMessageEnd()
     if result.success is not None:
       return result.success
-    raise TApplicationException(TApplicationException.MISSING_RESULT, "storage_names failed: unknown result");
+    raise TApplicationException(TApplicationException.MISSING_RESULT, "storage_storage_group_list failed: unknown result");
 
   def storage_capacity_kb(self, key):
     """
@@ -270,20 +291,20 @@ class Client(Iface):
       return result.success
     raise TApplicationException(TApplicationException.MISSING_RESULT, "storage_is_sync failed: unknown result");
 
-  def storage_join(self, key, device):
+  def storage_join(self, key, disk):
     """
     Parameters:
      - key
-     - device
+     - disk
     """
-    self.send_storage_join(key, device)
+    self.send_storage_join(key, disk)
     return self.recv_storage_join()
 
-  def send_storage_join(self, key, device):
+  def send_storage_join(self, key, disk):
     self._oprot.writeMessageBegin('storage_join', TMessageType.CALL, self._seqid)
     args = storage_join_args()
     args.key = key
-    args.device = device
+    args.disk = disk
     args.write(self._oprot)
     self._oprot.writeMessageEnd()
     self._oprot.trans.flush()
@@ -302,35 +323,125 @@ class Client(Iface):
       return result.success
     raise TApplicationException(TApplicationException.MISSING_RESULT, "storage_join failed: unknown result");
 
-  def storage_devs(self, key):
+  def storage_disk_list(self, key):
     """
     Parameters:
      - key
     """
-    self.send_storage_devs(key)
-    return self.recv_storage_devs()
+    self.send_storage_disk_list(key)
+    return self.recv_storage_disk_list()
 
-  def send_storage_devs(self, key):
-    self._oprot.writeMessageBegin('storage_devs', TMessageType.CALL, self._seqid)
-    args = storage_devs_args()
+  def send_storage_disk_list(self, key):
+    self._oprot.writeMessageBegin('storage_disk_list', TMessageType.CALL, self._seqid)
+    args = storage_disk_list_args()
     args.key = key
     args.write(self._oprot)
     self._oprot.writeMessageEnd()
     self._oprot.trans.flush()
 
-  def recv_storage_devs(self):
+  def recv_storage_disk_list(self):
     (fname, mtype, rseqid) = self._iprot.readMessageBegin()
     if mtype == TMessageType.EXCEPTION:
       x = TApplicationException()
       x.read(self._iprot)
       self._iprot.readMessageEnd()
       raise x
-    result = storage_devs_result()
+    result = storage_disk_list_result()
     result.read(self._iprot)
     self._iprot.readMessageEnd()
     if result.success is not None:
       return result.success
-    raise TApplicationException(TApplicationException.MISSING_RESULT, "storage_devs failed: unknown result");
+    raise TApplicationException(TApplicationException.MISSING_RESULT, "storage_disk_list failed: unknown result");
+
+  def storage_disk_id(self, disk):
+    """
+    Parameters:
+     - disk
+    """
+    self.send_storage_disk_id(disk)
+    return self.recv_storage_disk_id()
+
+  def send_storage_disk_id(self, disk):
+    self._oprot.writeMessageBegin('storage_disk_id', TMessageType.CALL, self._seqid)
+    args = storage_disk_id_args()
+    args.disk = disk
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()
+
+  def recv_storage_disk_id(self):
+    (fname, mtype, rseqid) = self._iprot.readMessageBegin()
+    if mtype == TMessageType.EXCEPTION:
+      x = TApplicationException()
+      x.read(self._iprot)
+      self._iprot.readMessageEnd()
+      raise x
+    result = storage_disk_id_result()
+    result.read(self._iprot)
+    self._iprot.readMessageEnd()
+    if result.success is not None:
+      return result.success
+    raise TApplicationException(TApplicationException.MISSING_RESULT, "storage_disk_id failed: unknown result");
+
+  def storage_disk_size(self, disk):
+    """
+    Parameters:
+     - disk
+    """
+    self.send_storage_disk_size(disk)
+    return self.recv_storage_disk_size()
+
+  def send_storage_disk_size(self, disk):
+    self._oprot.writeMessageBegin('storage_disk_size', TMessageType.CALL, self._seqid)
+    args = storage_disk_size_args()
+    args.disk = disk
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()
+
+  def recv_storage_disk_size(self):
+    (fname, mtype, rseqid) = self._iprot.readMessageBegin()
+    if mtype == TMessageType.EXCEPTION:
+      x = TApplicationException()
+      x.read(self._iprot)
+      self._iprot.readMessageEnd()
+      raise x
+    result = storage_disk_size_result()
+    result.read(self._iprot)
+    self._iprot.readMessageEnd()
+    if result.success is not None:
+      return result.success
+    raise TApplicationException(TApplicationException.MISSING_RESULT, "storage_disk_size failed: unknown result");
+
+  def storage_disk_port(self, disk):
+    """
+    Parameters:
+     - disk
+    """
+    self.send_storage_disk_port(disk)
+    return self.recv_storage_disk_port()
+
+  def send_storage_disk_port(self, disk):
+    self._oprot.writeMessageBegin('storage_disk_port', TMessageType.CALL, self._seqid)
+    args = storage_disk_port_args()
+    args.disk = disk
+    args.write(self._oprot)
+    self._oprot.writeMessageEnd()
+    self._oprot.trans.flush()
+
+  def recv_storage_disk_port(self):
+    (fname, mtype, rseqid) = self._iprot.readMessageBegin()
+    if mtype == TMessageType.EXCEPTION:
+      x = TApplicationException()
+      x.read(self._iprot)
+      self._iprot.readMessageEnd()
+      raise x
+    result = storage_disk_port_result()
+    result.read(self._iprot)
+    self._iprot.readMessageEnd()
+    if result.success is not None:
+      return result.success
+    raise TApplicationException(TApplicationException.MISSING_RESULT, "storage_disk_port failed: unknown result");
 
   def power_battery_percent(self):
     self.send_power_battery_percent()
@@ -387,15 +498,18 @@ class Processor(Iface, TProcessor):
   def __init__(self, handler):
     self._handler = handler
     self._processMap = {}
-    self._processMap["network_get_ipv4"] = Processor.process_network_get_ipv4
-    self._processMap["network_get_ipv6"] = Processor.process_network_get_ipv6
-    self._processMap["storage_names"] = Processor.process_storage_names
+    self._processMap["network_ipv4"] = Processor.process_network_ipv4
+    self._processMap["network_ipv6"] = Processor.process_network_ipv6
+    self._processMap["storage_storage_group_list"] = Processor.process_storage_storage_group_list
     self._processMap["storage_capacity_kb"] = Processor.process_storage_capacity_kb
     self._processMap["storage_usage_kb"] = Processor.process_storage_usage_kb
     self._processMap["storage_usage_percent"] = Processor.process_storage_usage_percent
     self._processMap["storage_is_sync"] = Processor.process_storage_is_sync
     self._processMap["storage_join"] = Processor.process_storage_join
-    self._processMap["storage_devs"] = Processor.process_storage_devs
+    self._processMap["storage_disk_list"] = Processor.process_storage_disk_list
+    self._processMap["storage_disk_id"] = Processor.process_storage_disk_id
+    self._processMap["storage_disk_size"] = Processor.process_storage_disk_size
+    self._processMap["storage_disk_port"] = Processor.process_storage_disk_port
     self._processMap["power_battery_percent"] = Processor.process_power_battery_percent
     self._processMap["power_is_ac_plugin"] = Processor.process_power_is_ac_plugin
 
@@ -414,35 +528,35 @@ class Processor(Iface, TProcessor):
       self._processMap[name](self, seqid, iprot, oprot)
     return True
 
-  def process_network_get_ipv4(self, seqid, iprot, oprot):
-    args = network_get_ipv4_args()
+  def process_network_ipv4(self, seqid, iprot, oprot):
+    args = network_ipv4_args()
     args.read(iprot)
     iprot.readMessageEnd()
-    result = network_get_ipv4_result()
-    result.success = self._handler.network_get_ipv4()
-    oprot.writeMessageBegin("network_get_ipv4", TMessageType.REPLY, seqid)
+    result = network_ipv4_result()
+    result.success = self._handler.network_ipv4()
+    oprot.writeMessageBegin("network_ipv4", TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()
 
-  def process_network_get_ipv6(self, seqid, iprot, oprot):
-    args = network_get_ipv6_args()
+  def process_network_ipv6(self, seqid, iprot, oprot):
+    args = network_ipv6_args()
     args.read(iprot)
     iprot.readMessageEnd()
-    result = network_get_ipv6_result()
-    result.success = self._handler.network_get_ipv6()
-    oprot.writeMessageBegin("network_get_ipv6", TMessageType.REPLY, seqid)
+    result = network_ipv6_result()
+    result.success = self._handler.network_ipv6()
+    oprot.writeMessageBegin("network_ipv6", TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()
 
-  def process_storage_names(self, seqid, iprot, oprot):
-    args = storage_names_args()
+  def process_storage_storage_group_list(self, seqid, iprot, oprot):
+    args = storage_storage_group_list_args()
     args.read(iprot)
     iprot.readMessageEnd()
-    result = storage_names_result()
-    result.success = self._handler.storage_names()
-    oprot.writeMessageBegin("storage_names", TMessageType.REPLY, seqid)
+    result = storage_storage_group_list_result()
+    result.success = self._handler.storage_storage_group_list()
+    oprot.writeMessageBegin("storage_storage_group_list", TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()
@@ -496,19 +610,52 @@ class Processor(Iface, TProcessor):
     args.read(iprot)
     iprot.readMessageEnd()
     result = storage_join_result()
-    result.success = self._handler.storage_join(args.key, args.device)
+    result.success = self._handler.storage_join(args.key, args.disk)
     oprot.writeMessageBegin("storage_join", TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()
 
-  def process_storage_devs(self, seqid, iprot, oprot):
-    args = storage_devs_args()
+  def process_storage_disk_list(self, seqid, iprot, oprot):
+    args = storage_disk_list_args()
     args.read(iprot)
     iprot.readMessageEnd()
-    result = storage_devs_result()
-    result.success = self._handler.storage_devs(args.key)
-    oprot.writeMessageBegin("storage_devs", TMessageType.REPLY, seqid)
+    result = storage_disk_list_result()
+    result.success = self._handler.storage_disk_list(args.key)
+    oprot.writeMessageBegin("storage_disk_list", TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()
+
+  def process_storage_disk_id(self, seqid, iprot, oprot):
+    args = storage_disk_id_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = storage_disk_id_result()
+    result.success = self._handler.storage_disk_id(args.disk)
+    oprot.writeMessageBegin("storage_disk_id", TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()
+
+  def process_storage_disk_size(self, seqid, iprot, oprot):
+    args = storage_disk_size_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = storage_disk_size_result()
+    result.success = self._handler.storage_disk_size(args.disk)
+    oprot.writeMessageBegin("storage_disk_size", TMessageType.REPLY, seqid)
+    result.write(oprot)
+    oprot.writeMessageEnd()
+    oprot.trans.flush()
+
+  def process_storage_disk_port(self, seqid, iprot, oprot):
+    args = storage_disk_port_args()
+    args.read(iprot)
+    iprot.readMessageEnd()
+    result = storage_disk_port_result()
+    result.success = self._handler.storage_disk_port(args.disk)
+    oprot.writeMessageBegin("storage_disk_port", TMessageType.REPLY, seqid)
     result.write(oprot)
     oprot.writeMessageEnd()
     oprot.trans.flush()
@@ -538,7 +685,7 @@ class Processor(Iface, TProcessor):
 
 # HELPER FUNCTIONS AND STRUCTURES
 
-class network_get_ipv4_args:
+class network_ipv4_args:
 
   thrift_spec = (
   )
@@ -561,7 +708,7 @@ class network_get_ipv4_args:
     if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
-    oprot.writeStructBegin('network_get_ipv4_args')
+    oprot.writeStructBegin('network_ipv4_args')
     oprot.writeFieldStop()
     oprot.writeStructEnd()
 
@@ -580,7 +727,7 @@ class network_get_ipv4_args:
   def __ne__(self, other):
     return not (self == other)
 
-class network_get_ipv4_result:
+class network_ipv4_result:
   """
   Attributes:
    - success
@@ -616,7 +763,7 @@ class network_get_ipv4_result:
     if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
-    oprot.writeStructBegin('network_get_ipv4_result')
+    oprot.writeStructBegin('network_ipv4_result')
     if self.success is not None:
       oprot.writeFieldBegin('success', TType.STRING, 0)
       oprot.writeString(self.success)
@@ -639,7 +786,7 @@ class network_get_ipv4_result:
   def __ne__(self, other):
     return not (self == other)
 
-class network_get_ipv6_args:
+class network_ipv6_args:
 
   thrift_spec = (
   )
@@ -662,7 +809,7 @@ class network_get_ipv6_args:
     if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
-    oprot.writeStructBegin('network_get_ipv6_args')
+    oprot.writeStructBegin('network_ipv6_args')
     oprot.writeFieldStop()
     oprot.writeStructEnd()
 
@@ -681,7 +828,7 @@ class network_get_ipv6_args:
   def __ne__(self, other):
     return not (self == other)
 
-class network_get_ipv6_result:
+class network_ipv6_result:
   """
   Attributes:
    - success
@@ -717,7 +864,7 @@ class network_get_ipv6_result:
     if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
-    oprot.writeStructBegin('network_get_ipv6_result')
+    oprot.writeStructBegin('network_ipv6_result')
     if self.success is not None:
       oprot.writeFieldBegin('success', TType.STRING, 0)
       oprot.writeString(self.success)
@@ -740,7 +887,7 @@ class network_get_ipv6_result:
   def __ne__(self, other):
     return not (self == other)
 
-class storage_names_args:
+class storage_storage_group_list_args:
 
   thrift_spec = (
   )
@@ -763,7 +910,7 @@ class storage_names_args:
     if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
-    oprot.writeStructBegin('storage_names_args')
+    oprot.writeStructBegin('storage_storage_group_list_args')
     oprot.writeFieldStop()
     oprot.writeStructEnd()
 
@@ -782,7 +929,7 @@ class storage_names_args:
   def __ne__(self, other):
     return not (self == other)
 
-class storage_names_result:
+class storage_storage_group_list_result:
   """
   Attributes:
    - success
@@ -823,7 +970,7 @@ class storage_names_result:
     if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
-    oprot.writeStructBegin('storage_names_result')
+    oprot.writeStructBegin('storage_storage_group_list_result')
     if self.success is not None:
       oprot.writeFieldBegin('success', TType.LIST, 0)
       oprot.writeListBegin(TType.STRING, len(self.success))
@@ -1311,18 +1458,18 @@ class storage_join_args:
   """
   Attributes:
    - key
-   - device
+   - disk
   """
 
   thrift_spec = (
     None, # 0
     (1, TType.STRING, 'key', None, None, ), # 1
-    (2, TType.STRING, 'device', None, None, ), # 2
+    (2, TType.STRING, 'disk', None, None, ), # 2
   )
 
-  def __init__(self, key=None, device=None,):
+  def __init__(self, key=None, disk=None,):
     self.key = key
-    self.device = device
+    self.disk = disk
 
   def read(self, iprot):
     if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
@@ -1340,7 +1487,7 @@ class storage_join_args:
           iprot.skip(ftype)
       elif fid == 2:
         if ftype == TType.STRING:
-          self.device = iprot.readString();
+          self.disk = iprot.readString();
         else:
           iprot.skip(ftype)
       else:
@@ -1357,9 +1504,9 @@ class storage_join_args:
       oprot.writeFieldBegin('key', TType.STRING, 1)
       oprot.writeString(self.key)
       oprot.writeFieldEnd()
-    if self.device is not None:
-      oprot.writeFieldBegin('device', TType.STRING, 2)
-      oprot.writeString(self.device)
+    if self.disk is not None:
+      oprot.writeFieldBegin('disk', TType.STRING, 2)
+      oprot.writeString(self.disk)
       oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()
@@ -1438,7 +1585,7 @@ class storage_join_result:
   def __ne__(self, other):
     return not (self == other)
 
-class storage_devs_args:
+class storage_disk_list_args:
   """
   Attributes:
    - key
@@ -1475,7 +1622,7 @@ class storage_devs_args:
     if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
-    oprot.writeStructBegin('storage_devs_args')
+    oprot.writeStructBegin('storage_disk_list_args')
     if self.key is not None:
       oprot.writeFieldBegin('key', TType.STRING, 1)
       oprot.writeString(self.key)
@@ -1498,7 +1645,7 @@ class storage_devs_args:
   def __ne__(self, other):
     return not (self == other)
 
-class storage_devs_result:
+class storage_disk_list_result:
   """
   Attributes:
    - success
@@ -1539,13 +1686,370 @@ class storage_devs_result:
     if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
       oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
       return
-    oprot.writeStructBegin('storage_devs_result')
+    oprot.writeStructBegin('storage_disk_list_result')
     if self.success is not None:
       oprot.writeFieldBegin('success', TType.LIST, 0)
       oprot.writeListBegin(TType.STRING, len(self.success))
       for iter13 in self.success:
         oprot.writeString(iter13)
       oprot.writeListEnd()
+      oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()
+
+  def validate(self):
+    return
+
+
+  def __repr__(self):
+    L = ['%s=%r' % (key, value)
+      for key, value in self.__dict__.iteritems()]
+    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+  def __eq__(self, other):
+    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+  def __ne__(self, other):
+    return not (self == other)
+
+class storage_disk_id_args:
+  """
+  Attributes:
+   - disk
+  """
+
+  thrift_spec = (
+    None, # 0
+    (1, TType.STRING, 'disk', None, None, ), # 1
+  )
+
+  def __init__(self, disk=None,):
+    self.disk = disk
+
+  def read(self, iprot):
+    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
+      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+      return
+    iprot.readStructBegin()
+    while True:
+      (fname, ftype, fid) = iprot.readFieldBegin()
+      if ftype == TType.STOP:
+        break
+      if fid == 1:
+        if ftype == TType.STRING:
+          self.disk = iprot.readString();
+        else:
+          iprot.skip(ftype)
+      else:
+        iprot.skip(ftype)
+      iprot.readFieldEnd()
+    iprot.readStructEnd()
+
+  def write(self, oprot):
+    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
+      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+      return
+    oprot.writeStructBegin('storage_disk_id_args')
+    if self.disk is not None:
+      oprot.writeFieldBegin('disk', TType.STRING, 1)
+      oprot.writeString(self.disk)
+      oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()
+
+  def validate(self):
+    return
+
+
+  def __repr__(self):
+    L = ['%s=%r' % (key, value)
+      for key, value in self.__dict__.iteritems()]
+    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+  def __eq__(self, other):
+    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+  def __ne__(self, other):
+    return not (self == other)
+
+class storage_disk_id_result:
+  """
+  Attributes:
+   - success
+  """
+
+  thrift_spec = (
+    (0, TType.STRING, 'success', None, None, ), # 0
+  )
+
+  def __init__(self, success=None,):
+    self.success = success
+
+  def read(self, iprot):
+    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
+      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+      return
+    iprot.readStructBegin()
+    while True:
+      (fname, ftype, fid) = iprot.readFieldBegin()
+      if ftype == TType.STOP:
+        break
+      if fid == 0:
+        if ftype == TType.STRING:
+          self.success = iprot.readString();
+        else:
+          iprot.skip(ftype)
+      else:
+        iprot.skip(ftype)
+      iprot.readFieldEnd()
+    iprot.readStructEnd()
+
+  def write(self, oprot):
+    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
+      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+      return
+    oprot.writeStructBegin('storage_disk_id_result')
+    if self.success is not None:
+      oprot.writeFieldBegin('success', TType.STRING, 0)
+      oprot.writeString(self.success)
+      oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()
+
+  def validate(self):
+    return
+
+
+  def __repr__(self):
+    L = ['%s=%r' % (key, value)
+      for key, value in self.__dict__.iteritems()]
+    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+  def __eq__(self, other):
+    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+  def __ne__(self, other):
+    return not (self == other)
+
+class storage_disk_size_args:
+  """
+  Attributes:
+   - disk
+  """
+
+  thrift_spec = (
+    None, # 0
+    (1, TType.STRING, 'disk', None, None, ), # 1
+  )
+
+  def __init__(self, disk=None,):
+    self.disk = disk
+
+  def read(self, iprot):
+    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
+      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+      return
+    iprot.readStructBegin()
+    while True:
+      (fname, ftype, fid) = iprot.readFieldBegin()
+      if ftype == TType.STOP:
+        break
+      if fid == 1:
+        if ftype == TType.STRING:
+          self.disk = iprot.readString();
+        else:
+          iprot.skip(ftype)
+      else:
+        iprot.skip(ftype)
+      iprot.readFieldEnd()
+    iprot.readStructEnd()
+
+  def write(self, oprot):
+    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
+      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+      return
+    oprot.writeStructBegin('storage_disk_size_args')
+    if self.disk is not None:
+      oprot.writeFieldBegin('disk', TType.STRING, 1)
+      oprot.writeString(self.disk)
+      oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()
+
+  def validate(self):
+    return
+
+
+  def __repr__(self):
+    L = ['%s=%r' % (key, value)
+      for key, value in self.__dict__.iteritems()]
+    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+  def __eq__(self, other):
+    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+  def __ne__(self, other):
+    return not (self == other)
+
+class storage_disk_size_result:
+  """
+  Attributes:
+   - success
+  """
+
+  thrift_spec = (
+    (0, TType.STRING, 'success', None, None, ), # 0
+  )
+
+  def __init__(self, success=None,):
+    self.success = success
+
+  def read(self, iprot):
+    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
+      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+      return
+    iprot.readStructBegin()
+    while True:
+      (fname, ftype, fid) = iprot.readFieldBegin()
+      if ftype == TType.STOP:
+        break
+      if fid == 0:
+        if ftype == TType.STRING:
+          self.success = iprot.readString();
+        else:
+          iprot.skip(ftype)
+      else:
+        iprot.skip(ftype)
+      iprot.readFieldEnd()
+    iprot.readStructEnd()
+
+  def write(self, oprot):
+    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
+      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+      return
+    oprot.writeStructBegin('storage_disk_size_result')
+    if self.success is not None:
+      oprot.writeFieldBegin('success', TType.STRING, 0)
+      oprot.writeString(self.success)
+      oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()
+
+  def validate(self):
+    return
+
+
+  def __repr__(self):
+    L = ['%s=%r' % (key, value)
+      for key, value in self.__dict__.iteritems()]
+    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+  def __eq__(self, other):
+    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+  def __ne__(self, other):
+    return not (self == other)
+
+class storage_disk_port_args:
+  """
+  Attributes:
+   - disk
+  """
+
+  thrift_spec = (
+    None, # 0
+    (1, TType.STRING, 'disk', None, None, ), # 1
+  )
+
+  def __init__(self, disk=None,):
+    self.disk = disk
+
+  def read(self, iprot):
+    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
+      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+      return
+    iprot.readStructBegin()
+    while True:
+      (fname, ftype, fid) = iprot.readFieldBegin()
+      if ftype == TType.STOP:
+        break
+      if fid == 1:
+        if ftype == TType.STRING:
+          self.disk = iprot.readString();
+        else:
+          iprot.skip(ftype)
+      else:
+        iprot.skip(ftype)
+      iprot.readFieldEnd()
+    iprot.readStructEnd()
+
+  def write(self, oprot):
+    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
+      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+      return
+    oprot.writeStructBegin('storage_disk_port_args')
+    if self.disk is not None:
+      oprot.writeFieldBegin('disk', TType.STRING, 1)
+      oprot.writeString(self.disk)
+      oprot.writeFieldEnd()
+    oprot.writeFieldStop()
+    oprot.writeStructEnd()
+
+  def validate(self):
+    return
+
+
+  def __repr__(self):
+    L = ['%s=%r' % (key, value)
+      for key, value in self.__dict__.iteritems()]
+    return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+  def __eq__(self, other):
+    return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
+
+  def __ne__(self, other):
+    return not (self == other)
+
+class storage_disk_port_result:
+  """
+  Attributes:
+   - success
+  """
+
+  thrift_spec = (
+    (0, TType.BYTE, 'success', None, None, ), # 0
+  )
+
+  def __init__(self, success=None,):
+    self.success = success
+
+  def read(self, iprot):
+    if iprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and isinstance(iprot.trans, TTransport.CReadableTransport) and self.thrift_spec is not None and fastbinary is not None:
+      fastbinary.decode_binary(self, iprot.trans, (self.__class__, self.thrift_spec))
+      return
+    iprot.readStructBegin()
+    while True:
+      (fname, ftype, fid) = iprot.readFieldBegin()
+      if ftype == TType.STOP:
+        break
+      if fid == 0:
+        if ftype == TType.BYTE:
+          self.success = iprot.readByte();
+        else:
+          iprot.skip(ftype)
+      else:
+        iprot.skip(ftype)
+      iprot.readFieldEnd()
+    iprot.readStructEnd()
+
+  def write(self, oprot):
+    if oprot.__class__ == TBinaryProtocol.TBinaryProtocolAccelerated and self.thrift_spec is not None and fastbinary is not None:
+      oprot.trans.write(fastbinary.encode_binary(self, (self.__class__, self.thrift_spec)))
+      return
+    oprot.writeStructBegin('storage_disk_port_result')
+    if self.success is not None:
+      oprot.writeFieldBegin('success', TType.BYTE, 0)
+      oprot.writeByte(self.success)
       oprot.writeFieldEnd()
     oprot.writeFieldStop()
     oprot.writeStructEnd()
