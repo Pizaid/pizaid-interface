@@ -36,3 +36,16 @@ def gather_power_info(comm):
     }
     return power_info
 
+def get_disk_ids(comm):
+    from django.utils import simplejson
+    disk_ids = {}
+    for group in comm.storage().storage_group_list():
+        disk_ids[group] = []
+        # XXX: I guess disk_port is some kind of /dev/sda1 ???
+        for disk in comm.storage().disk_list(group):
+            disk_info = {
+                "id": comm.storage().disk_id(disk),
+                "port": comm.storage().disk_port(disk), # "port": disk
+            }
+            disk_ids[group].append(disk_info)
+    return simplejson.dumps(disk_ids)

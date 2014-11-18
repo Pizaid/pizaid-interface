@@ -10,6 +10,7 @@
 
 from django.shortcuts import render_to_response
 from thriftinterface.controllercomm import ControllerComm
+from django.views.decorators.csrf import csrf_exempt
 import models
 
 def index(request):
@@ -21,5 +22,17 @@ def index(request):
         }
     return render_to_response('interface/index.html', status)
 
+@csrf_exempt
 def settings(request):
-    return render_to_response('interface/settings.html')
+    from django.http import HttpResponse
+    with ControllerComm() as comm:
+        if request.method == 'POST':
+            post = request.POST
+            comm.storage().join(post["name"], post["disk"])
+            # TODO: need to redirect
+            return HttpResponse("succeess!!", mimetype="text/plain");
+        else:
+            disk_ids = models.get_disk_ids(comm)
+            return render_to_response(
+                'interface/settings.html', { "disk_ids": disk_ids }
+            )

@@ -1,17 +1,23 @@
 {% extends "base.html" %}
 
-{% block title %}Pizaid管理画面{% endblock %}
+{% load staticfiles %}
+
+<!-- include extra css -->
+{% block extra_css %}
+<link rel="stylesheet" type="text/css"
+      href="{% static 'css/interface/settings.css' %}" />
+{% endblock %}
+
+<!-- include extra javascript -->
+{% block extra_javascript %}
+<script type="text/javascript" src="{% static 'js/settings.js' %}"></script>
+{% endblock %}
+
+{% block title %}Pizaidディスク設定{% endblock %}
 
 {% block content %}
-<div class="hardware">
-  <h2>ディスクの使用状況</h2>
-</div>
-
-<div class="hardware">
-  <h2>ここはsettingだよ</h2>
-</div>
-
-<div class="network">
-  <h2>バッテリー容量の確認</h2>
+<div id="storage" data-disk-ids='{{ disk_ids }}'>
+  <h2>ストレージの設定</h2>
+  <div id="flowchart"></div>
 </div>
 {% endblock %}

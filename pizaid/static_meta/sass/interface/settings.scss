@@ -1,0 +1,44 @@
+@import "compass/css3";
+
+$width: 900px;
+$header: 30px;
+$height: 600px;
+
+#storage {
+  height: $height;
+  border: solid;
+
+  h2 { height: $header; }
+
+  #flowchart {
+    height: $height - $header;
+    position: relative;
+
+    .node {
+      width: 85px;
+      margin-bottom: 10px;
+      height: 50px;
+      border: solid;
+      position: relative;
+
+      &.main {
+        top: ($height - $header - 25px) / 2;
+        margin-left: 30px;
+        background-color: green;
+        float: left;
+      }
+
+      &.sync {
+        margin: auto;
+        background-color: yellow;
+        float: right;
+      }
+
+      &.unused {
+        float: right;
+        margin-right: 30px;
+        cursor: pointer;
+      }
+    }
+  }
+}
