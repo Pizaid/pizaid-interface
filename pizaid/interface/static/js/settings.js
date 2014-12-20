@@ -1,14 +1,12 @@
 $(function() {
-  // somehow strings embedded into DOM using 'data-' comes with ', not "
-  var disk_ids_json = $("#storage").data("diskIds").replace(/\'/g, '\"');
-  var disk_ids = $.parseJSON(disk_ids_json);
+  var disk_ids = $("#storage").data("diskIds");
   $("#storage").removeAttr();
   $("#storage").removeData();
-
   var put_disk_nodes = function() {
     Object.keys(disk_ids).forEach(function(group) {
       var id_suffix = 1;
       disk_ids[group].forEach(function(disk) {
+        if (disk.port == -1) { return; }
         var node_id = group + "node" + id_suffix++;
         var $new_node = $("<div/>")
                          .attr("id", node_id)

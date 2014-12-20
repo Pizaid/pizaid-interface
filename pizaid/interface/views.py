@@ -30,9 +30,9 @@ def settings(request):
             post = request.POST
             comm.storage().join(post["name"], post["disk"])
             # TODO: need to redirect
-            return HttpResponse("succeess!!", mimetype="text/plain");
+            return HttpResponse("success!!", mimetype="text/plain")
         else:
             disk_ids = models.get_disk_ids(comm)
             return render_to_response(
-                'interface/settings.html', { "disk_ids": disk_ids }
+                'interface/settings.html', {"disk_ids": disk_ids}
             )

@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from django.db import models
-from thriftinterface.controllercomm import ControllerComm
-
 def gather_storage_info(comm):
     storage_info = {}
     for group_name in comm.storage().storage_group_list():
@@ -41,11 +38,17 @@ def get_disk_ids(comm):
     disk_ids = {}
     for group in comm.storage().storage_group_list():
         disk_ids[group] = []
-        # XXX: I guess disk_port is some kind of /dev/sda1 ???
         for disk in comm.storage().disk_list(group):
             disk_info = {
                 "id": comm.storage().disk_id(disk),
-                "port": comm.storage().disk_port(disk), # "port": disk
+                "port": comm.storage().disk_port(disk),  # "port": disk
             }
             disk_ids[group].append(disk_info)
+    # test data
+    # disk_ids = {
+    #    "main":   [{"id": "Intel", "port": "/dev/sda1"}],
+    #    "sync":   [{"id": "IBM", "port": "/dev/sda2"},
+    #               {"id": "Macbook", "port": "/dev/sda3"}],
+    #    "unused": [{"id": "Windows", "port": "/dev/sda4"}]
+    # }
     return simplejson.dumps(disk_ids)
